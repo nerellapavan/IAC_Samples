@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 import json
 
-#Connect to EC2 using default AWS credentials in awscli config
+#Connect to AWS using default AWS credentials in awscli config
 ec2 = boto3.client('ec2')
 
 #AWSCLI command that describes security groups
@@ -11,7 +11,7 @@ response = ec2.describe_security_groups()
 #writes json output to file...
 #print(response)
 
-with open('output.json', 'w') as outfile:
+with open('SGOutput.json', 'w') as outfile:
 	json.dump(response, outfile, ensure_ascii=False, indent=4, sort_keys=True)
 
 
@@ -22,13 +22,13 @@ with open('output.json', 'w') as outfile:
 #import csv
 import csv
 
-with open("output.json") as f:
+with open("SGOutput.json") as f:
  file_parsed = json.load(f)
 
 file_data = file_parsed['SecurityGroups']
 
 #open a file for writing
-data = open('output.csv', 'w')
+data = open('SGOutput.csv', 'w')
 
 #create the csv writer object
 
