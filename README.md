@@ -7,7 +7,7 @@
 ## Scripts - Various scripts and utilities
 ### Python -
 
-**CWLogCleaner.py** - Using boto this script will delete cloudwatch logs based on the "prefix" that you input into the code. This may be made to be more interactive in the future. For now look in the code to see where to enter your cloudwatch log group prefix name. This is a useful script when you have multiple loggroups that all start with the same few letters such as "company-name-" where the full og group name might be "company-name-loggroup-number001", "company-name-loggroup-number002", "company-name-loggroup-number003", and so on.
+**CWLogCleaner.py** - Using boto this script will delete cloudwatch logs based on the "prefix" that you input into the code. This may be made to be more interactive in the future. For now look in the code to see where to enter your cloudwatch log group prefix name. This is a useful script when you have multiple loggroups that all start with the same few letters such as "company-name-" where the full log group name might be "company-name-loggroup-number001", "company-name-loggroup-number002", "company-name-loggroup-number003", and so on.
 
 **ELBLister.py** - Describes all of the ELBs in the EAST region and returns just the names. More could be added to this to actually do something with those names.
 
