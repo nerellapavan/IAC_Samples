@@ -1,3 +1,7 @@
+#Still in progress
+
+#This script will Pull an inventory of all security groups and list the open ports/ip addresses
+
 import boto3
 from botocore.exceptions import ClientError
 import json
