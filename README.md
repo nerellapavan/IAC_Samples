@@ -17,7 +17,7 @@
 
 **ELBLister.py** - Describes all of the ELBs in the EAST region and returns just the names. More could be added to this to actually do something with those names.
 
-**MFAChecker.py** - Not useful at this time but the plan is to scan for users who are and are not using MFA on their users since AWS doesnt provide a way to enforce this important security rule.
+**MFAChecker.py** - Not useful at this time but the plan is to scan for users who are and are not using MFA on their users since AWS doesnt provide a way to enforce this important security rule outside of a policy file.
 
 **SGInventory.py** - Using boto it will run a describe on all security groups and output the data to a output.json file locally. It will also convert the json to a CSV file. The output to the CSV file needs to be cleaned up a bit.
 
