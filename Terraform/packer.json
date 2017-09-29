@@ -1,0 +1,40 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "instance_type": "m3.medium",
+    "source_ami": "ami-80861296"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "{{user `source_ami`}}",
+    "instance_type": "{{user `instance_type`}}",
+    "ssh_username": "ubuntu",
+    "ami_name": "BaseImage-{{timestamp}}",
+    "associate_public_ip_address": true,
+    "tags": {
+      "Name": "{{user `ami_name`}}",
+      "Date": "{{isotime `2006-01-02-1504`}}",
+      "Platform": "Ubuntu",
+      "OSVersion": "16.04"
+    }
+  }],
+  "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo apt-get update -y",
+        "cd /tmp/",
+        "sudo curl -O https://packages.chef.io/files/stable/chefdk/1.4.3/ubuntu/16.04/chefdk_1.4.3-1_amd64.deb",
+        "sudo dpkg -i chefdk_1.4.3-1_amd64.deb",
+        "sudo git clone https://github.com/sethfloydjr/Berksfile.git",
+        "cd /tmp/Berksfile",
+        "sudo ls -la",
+        "sudo berks install"
+      ]
+    }
+  ]
+}
