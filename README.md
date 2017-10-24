@@ -22,12 +22,12 @@
 **SGInventory.py** - Using boto it will run a describe on all security groups and output the data to a output.json file locally. It will also convert the json to a CSV file. The output to the CSV file needs to be cleaned up a bit.
 
 
-## Terraform - Various Terraform and Packer scripts and utilities
+## Terraform - Various Terraform scripts and utilities
 
-###Packer -
+**state.tf** - Modify the bucket name and key(path) in this file to match your own in AWS S3. Place the "terraform.tfstate" file in the location described by 'key' in the state.tf file.
+
+
+## Packer - Various Packer build templates
 **Packer.json** - A packer file that will spin up an AMI based on Ubuntu 16.04, install OS updates, install chefdk 1.4.3, clones down a sample Berksfile, adds some slight config for berks and then will install whatever you have in the berksfile. In this case its just nginx.
 The command for this file is:
 `packer build -var 'aws_access_key=YOUR_ACCESS_KEY' -var 'aws_secret_key=YOUR_SECRET_KEY' -var 'vpc_id=YOUR_VPC_ID' -var 'subnet_id=YOUR_SUBNET_ID' packer.json` You need to tell packer your VPC and Subnet IDs because it cant figure out what your default ids are or which vpc you want this AMI in.
-
-###Terraform -
-**state.tf** - Modify the bucket name and key(path) in this file to match your own in AWS S3. Place the "terraform.tfstate" file in the location described by 'key' in the state.tf file.
