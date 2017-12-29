@@ -6,8 +6,7 @@
 
 ## Docker - Various Docker and ECS images and scripts/functions
 ### Docker -
-
-### ECS -
+**Dockerfile** - Use this to create an image that will install Packer. By adding a few lines for where the image should pick up the files you can dump your packer.json file into this image and then add a script to kick off the packer run automatically once the image is started. A breif example is in the code. The dockerfile itself can be run with the following command: `docker build -t demo-packer:demo-packer --rm=true .`
 
 
 ## Scripts - Various scripts and utilities
