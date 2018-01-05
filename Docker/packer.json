@@ -5,7 +5,8 @@
     "ami_name":"Packer Demo",
     "instance_type": "m3.medium",
     "source_ami": "ami-80861296",
-    "chef_version": "2.4.17"
+    "chef_version": "2.4.17",
+    "datadog_api_key": ""
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -24,7 +25,8 @@
       "OSVersion": "16.04"
     }
   }],
-  "provisioners": [{
+  "provisioners": [
+    {
       "type": "shell",
       "inline": [
         "sleep 30",
@@ -37,6 +39,14 @@
         "sudo ls -la",
         "sudo berks install"
       ]
+    },
+    {"type": "shell",
+    "inline": [
+      "echo 'installing Datadog agent...'",
+      "curl -O https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/install_agent.sh",
+      "chmod 755 install_agent.sh",
+      "DD_API_KEY={{user `datadog_api_key`}} ./install_agent.sh"
+    ]
     }
   ]
 }
