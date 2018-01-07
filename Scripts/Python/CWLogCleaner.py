@@ -26,10 +26,10 @@ for i in file_parsed['logGroups']:
 #NEED: Decision point should be added here to prompt user to delete logs or not
 
 #Deletes the log groups that begin with the given prefix
-for i in file_parsed['logGroups']:
-	cwlogs.delete_log_group(
-   	    logGroupName=(i['logGroupName'])
-	)
+#for i in file_parsed['logGroups']:
+#	cwlogs.delete_log_group(
+#   	    logGroupName=(i['logGroupName'])
+#	)
 
 
 print('Done')
