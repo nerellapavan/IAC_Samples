@@ -6,3 +6,6 @@
 
 # Module directory
 .terraform/
+
+#S C R I P T  F I L E S
+Scripts/Python/response.json
