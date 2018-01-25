@@ -1,13 +1,15 @@
-
 import boto3
 import json
-import datetime
+import time
+from time import strftime
+from datetime import datetime
 from datetime import timedelta
 import os
+import subprocess
 
 ACCESS_KEY = os.getenv('AWS_ACCESS_KEY_ID')
 SECRET_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-SESSION_TOKEN = os.getenv('AWS_SESSION_TOKEN')
+#SESSION_TOKEN = os.getenv('AWS_SESSION_TOKEN')
 
 print('Connecting...')
 ec2 = boto3.client(
@@ -22,8 +24,9 @@ def checkIfOlder(isoformat, targetDate):
     dateAsString = datetime.datetime.strptime(isoformat, '%Y-%m-%dT%H:%M:%S.%fZ')
     return dateAsString <= targetDate
 
-#CertainDate needs to be automated to find the X days ago
-certainDate = datetime.datetime(2017, 12, 31, 0, 0, 0)
+#CertainDate X days ago
+certainDate = datetime.now() - timedelta(days=45)
+print(certainDate)
 
 
 print('Describing AMIs...')

@@ -1,4 +1,5 @@
 #Sill in progress
+#Idea is to return ELB info and list of attached instances
 
 import boto3
 from botocore.exceptions import ClientError
