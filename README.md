@@ -6,7 +6,8 @@
 
 ## Docker - Various Docker and ECS images and scripts/functions
 ### Docker -
-**Dockerfile** - Use this to create an image that will install Packer. By adding a few lines for where the image should pick up the files you can dump your packer.json file into this image and then add a script to kick off the packer run automatically once the image is started. A breif example is in the code. The dockerfile itself can be run with the following command: `docker build -t demo-packer:demo-packer --rm=true .`
+**Dockerfile** - Use this to create an image that will install Packer. By adding a few lines for where the image should pick up the files you can dump your packer.json file into this image and then add a script to kick off the packer run automatically once the image is started. A brief example is in the code. The dockerfile itself can be run with the following command: `docker build -t demo-packer:demo-packer --rm=true .`
+Packer file in this dir is a copy of what is found under the Packer directory.
 
 
 ## Scripts - Various scripts and utilities
@@ -27,6 +28,7 @@
 
 
 ## Packer - Various Packer build templates
-**Packer.json** - A packer file that will spin up an AMI based on Ubuntu 16.04, install OS updates, install chefdk 1.4.3, clones down a sample Berksfile, adds some slight config for berks and then will install whatever you have in the berksfile. In this case its just nginx.
+**Packer.json** - A packer file that will spin up an AMI based on Ubuntu 16.04, install OS updates, install chefdk 1.4.3, clones down a sample Berksfile, adds some slight config for berks and then will install whatever you have in the berksfile. In this case its just nginx. This will also install the Datadog monitoring agent. Free accounts are available through their website.
 The command for this file is:
-`packer build -var 'aws_access_key=YOUR_ACCESS_KEY' -var 'aws_secret_key=YOUR_SECRET_KEY' -var 'vpc_id=YOUR_VPC_ID' -var 'subnet_id=YOUR_SUBNET_ID' packer.json` You need to tell packer your VPC and Subnet IDs because it cant figure out what your default ids are or which vpc you want this AMI in.
+`packer build -var 'aws_access_key=YOUR_ACCESS_KEY' -var 'aws_secret_key=YOUR_SECRET_KEY' -var 'datadog_api_key=YOUR_DD_API_KEY' packer.json`
+See `config.sh` for a possible way to automate the variable entry.
