@@ -1,3 +1,9 @@
+variable "access_key" {}
+
+variable "secret_key" {}
+
+variable "aws_account_id" {}
+
 variable "region" {
   default = "us-east-1"
 }
